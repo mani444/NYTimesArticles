@@ -79,7 +79,7 @@ const ArticleCards = () => {
                           </div>
                           <div className="inline-flex pb-1">
                             <CardTitle
-                              className={`relative text-start font-semibold text-grey text-[16px] md:text-[20px] lg:text-[22px] tracking-[0] leading-[32px] ${
+                              className={`relative min-h-[4rem] text-start font-semibold text-grey text-[16px] md:text-[20px] lg:text-[22px] tracking-[0] leading-[32px] ${
                                 isExpanded ? "" : "line-clamp-2"
                               }`}
                             >
@@ -90,7 +90,7 @@ const ArticleCards = () => {
                           </div>
                           <div className="flex">
                             <CardDescription
-                              className={`relative text-start [font-family:'Roboto-Regular',Helvetica] text-customgrey text-[14px] md:text-[15px] lg:text-[17px] tracking-[0] leading-[32px] ${
+                              className={`relative min-h-[4rem] text-start [font-family:'Roboto-Regular',Helvetica] text-customgrey text-[14px] md:text-[15px] lg:text-[17px] tracking-[0] leading-[32px] ${
                                 isExpanded ? "" : "line-clamp-2"
                               }`}
                             >
