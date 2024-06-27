@@ -1,4 +1,18 @@
 @tailwind base;
-  @tailwind components;
-  @tailwind utilities;
-  
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.truncate-title {
+  @apply relative w-full h-[3em] overflow-hidden whitespace-nowrap;
+}
+
+.truncate-title.show-full-title {
+  @apply whitespace-normal h-auto;
+}

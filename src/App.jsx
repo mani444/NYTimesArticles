@@ -1,17 +1,11 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import { Button } from "@/components/ui/button";
-
+import MainPage from "./components/MainPage/Page";
 
 function App() {
-
   return (
     <>
-      <Button variant="default" size="default">Button</Button>
+      <MainPage />
     </>
-  )
+  );
 }
 
 export default App;
