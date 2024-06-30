@@ -1,4 +1,3 @@
-import React from "react";
 import logo from "../../assets/The_New_York_Times_logo.png";
 
 const Navbar = () => {

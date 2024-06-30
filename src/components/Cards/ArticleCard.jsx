@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
 import {
   Card,
@@ -6,12 +7,12 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "../../components/ui/card";
+} from "../ui/card";
 import useSWR from "swr";
 import { fetchData } from "../../lib/utils";
-import logo from "../../assets/cardDefaultImage.webp";
+import logo from "../../assets/cardDefaultImage.jpg";
 
-const ArticleCards = () => {
+const ArticleCard = () => {
   const url =
     "https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=Xt71Gy5lyrhc81n0R7LcWH1yljib2qXR";
   const { data, error } = useSWR(url, fetchData);
@@ -20,7 +21,7 @@ const ArticleCards = () => {
   if (error) return <div>Failed to load</div>;
   if (!data) return <div>Loading...</div>;
 
-  const articles = data.results;
+  const articles = data?.results || [];
   const placeholderImage = logo;
 
   const handleExpandClick = (index) => {
@@ -71,11 +72,13 @@ const ArticleCards = () => {
                           )}
                         </CardHeader>
                         <CardContent className="relative pl-7 pt-6 flex flex-col items-start justify-center">
-                          <div className="flex align-middle items-center justify-start gap-3 py-0">
-                            <div className="[font-family:'Roboto-Regular',Helvetica] text-customgrey text-[14px] md:text-[15px] lg:text-[17px] tracking-[0] leading-[32px] whitespace-nowrap">
+                          <div className="flex align-middle items-center justify-start gap-3 py-0 w-full">
+                            <div
+                              title={article.byline || "Unknown Author"}
+                              className="[font-family:'Roboto-Regular',Helvetica] text-customgrey text-[14px] md:text-[15px] lg:text-[17px] tracking-[0] leading-[32px] whitespace-nowrap overflow-hidden text-ellipsis"
+                            >
                               {article.byline || "Unknown Author"}
                             </div>
-                            <div className="w-px h-[12px] bg-customgrey" />
                           </div>
                           <div className="inline-flex pb-1">
                             <CardTitle
@@ -121,4 +124,4 @@ const ArticleCards = () => {
   );
 };
 
-export default ArticleCards;
+export default ArticleCard;
