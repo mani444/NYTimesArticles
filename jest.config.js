@@ -11,5 +11,6 @@ export default {
    setupFilesAfterEnv: ['@testing-library/jest-dom'],
    moduleNameMapper: {
     '\\.(jpg|jpeg|png|gif|webp|svg)$': '<rootDir>/__mocks__/fileMock.js',
+    "^@/(.*)$": "<rootDir>/src/$1"
   },
  };

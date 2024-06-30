@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
 import useSWR from "swr";
-import { fetchData } from "../../lib/utils";
+import { fetchData } from "@/lib/utils";
 import ArticleCard from "../ArticleCard/ArticleCard";
 import { Spinner } from '@/components/ui/spinner';
 
@@ -14,14 +14,14 @@ const ArticleList = () => {
   if (!data)
     return (
       <div className="flex items-center justify-center h-[calc(100vh-100px)] gap-3">
-        <Spinner size="large" />
+        <Spinner size="large" testId="loading-spinner" />
       </div>
     );
 
   const articles = data?.results || [];
 
   return (
-    <div className="relative">
+    <div className="relative py-16">
       <div className="container mx-auto px-4">
         <div className="innermain flex w-3/4 mr-auto ml-auto mb-32 pt-10">
           <div className="flex flex-col w-full justify-center items-center relative">

@@ -17,6 +17,9 @@ export default {
       },
     },
     extend: {
+      boxShadow: {
+        "custom": '0px 10px 30px #6377ee4c'
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },

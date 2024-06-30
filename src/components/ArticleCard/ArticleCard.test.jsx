@@ -2,6 +2,7 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import ArticleCard from "./ArticleCard";
+import { BrowserRouter as Router } from "react-router-dom";
 
 const mockArticle = {
   title: "Test Article",
@@ -14,14 +15,25 @@ const mockArticle = {
 
 describe("ArticleCard", () => {
   it("renders article data correctly", () => {
-    render(<ArticleCard article={mockArticle} index={0} />);
+    render(
+      <Router>
+        <ArticleCard article={mockArticle} index={0} />
+      </Router>
+    );
     expect(screen.getByText(/Test Article/i)).toBeInTheDocument();
     expect(screen.getByText(/Test Author/i)).toBeInTheDocument();
-    expect(screen.getByRole("img", { name: /Test Article/i })).toHaveAttribute("src", "test_image_url.jpg");
+    expect(screen.getByRole("img", { name: /Test Article/i })).toHaveAttribute(
+      "src",
+      "test_image_url.jpg"
+    );
   });
 
   it("toggles expand/collapse on click", async () => {
-    render(<ArticleCard article={mockArticle} index={0} />);
+    render(
+      <Router>
+        <ArticleCard article={mockArticle} index={0} />
+      </Router>
+    );
     const readMoreButton = screen.getByText(/Read More/i);
     fireEvent.click(readMoreButton);
     expect(screen.getByText(/Show Less/i)).toBeInTheDocument();
