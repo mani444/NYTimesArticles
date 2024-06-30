@@ -6,8 +6,9 @@ import ArticleCard from "../ArticleCard/ArticleCard";
 import { Spinner } from '@/components/ui/spinner';
 
 const ArticleList = () => {
+  const api_key =  import.meta.env.VITE_API_KEY;
   const url =
-    "https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=Xt71Gy5lyrhc81n0R7LcWH1yljib2qXR";
+    `https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=${api_key}`;
   const { data, error } = useSWR(url, fetchData);
 
   if (error) return <div>Failed to load</div>;
