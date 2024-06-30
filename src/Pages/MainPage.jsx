@@ -1,13 +1,12 @@
 import Navbar from "../components/Navbar/Navbar";
-
-import ArticleCard from "../components/Cards/ArticleCard";
+import ArticleList from "@/components/ArticleList/ArticleList";
 
 const MainPage = () => {
   return (
     <>
       <Navbar />
       <div className="w-full">
-        <ArticleCard />
+        <ArticleList />
       </div>
     </>
   );
