@@ -10,7 +10,7 @@ import {
 } from "../ui/card";
 import logo from "@/assets/cardDefaultImage.jpg";
 import PropTypes from "prop-types";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Button } from "../ui/button";
 
 const ArticleCard = ({ article, index }) => {
@@ -37,23 +37,26 @@ const ArticleCard = ({ article, index }) => {
     >
       <div className="relative bg-white rounded-[10px] overflow-hidden !shadow-custom opacity-[0.93] inner-box">
         <CardHeader className="p-0 image-holder cursor-pointer">
-          <Link to={`/detail/${article.id}`}>
+          <NavLink
+            to={`/detail/${article?.id}`}
+            state={["Testing", 34, "uselocation"]}
+          >
             {imageUrl && (
               <img
                 className="relative w-full h-full object-cover"
-                alt={article.title}
+                alt={article?.title}
                 src={imageUrl}
               />
             )}
-          </Link>
+          </NavLink>
         </CardHeader>
         <CardContent className="relative pl-7 pt-6 flex flex-col items-start justify-center">
           <div className="flex align-middle items-center justify-start gap-3 py-0 w-full">
             <div
-              title={article.byline || "Unknown Author"}
+              title={article?.byline || "Unknown Author"}
               className="[font-family:'Roboto-Regular',Helvetica] text-customgrey text-[14px] md:text-[15px] lg:text-[17px] tracking-[0] leading-[32px] whitespace-nowrap overflow-hidden text-ellipsis"
             >
-              {article.byline || "Unknown Author"}
+              {article?.byline || "Unknown Author"}
             </div>
           </div>
           <div className="inline-flex pb-1">
@@ -61,10 +64,10 @@ const ArticleCard = ({ article, index }) => {
               className={`cursor-pointer relative min-h-[4rem] text-start font-semibold text-grey text-[16px] md:text-[20px] lg:text-[22px] tracking-[0] leading-[32px] line-clamp-2
               }`}
               onClick={() => {
-                navigate(`/detail/${article.id}`);
+                navigate(`/detail/${article?.id}`);
               }}
             >
-              {article.title}
+              {article?.title}
             </CardTitle>
           </div>
           <div className="flex">
@@ -73,7 +76,7 @@ const ArticleCard = ({ article, index }) => {
                 isExpanded ? "" : "line-clamp-2"
               }`}
             >
-              {article.abstract}
+              {article?.abstract}
             </CardDescription>
           </div>
           <Button
