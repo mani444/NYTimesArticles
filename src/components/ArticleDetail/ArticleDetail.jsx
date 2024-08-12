@@ -36,12 +36,12 @@ const ArticleDetail = () => {
         <article className="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
           <header className="mb-4 lg:mb-6 not-format">
             <h1 className="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white">
-              {article.title}
+              {article?.title}
             </h1>
             <figure>
               <img
                 className="relative w-full h-full object-cover"
-                alt={article.title}
+                alt={article?.title}
                 src={imageUrl}
               />
             </figure>
@@ -50,7 +50,7 @@ const ArticleDetail = () => {
             <div className="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
               <img
                 className="mr-4 w-16 h-16 rounded-full"
-                alt={article.byline || "Unknown Author"}
+                alt={article?.byline || "Unknown Author"}
                 src={imageUrl}
               />
               <div>
@@ -59,7 +59,7 @@ const ArticleDetail = () => {
                   rel="author"
                   className="text-xl font-bold text-gray-900 dark:text-white"
                 >
-                  {article.byline || "Unknown Author"}
+                  {article?.byline || "Unknown Author"}
                 </a>
                 <p className="text-base text-gray-500 dark:text-gray-400">
                   Author
@@ -67,9 +67,9 @@ const ArticleDetail = () => {
               </div>
             </div>
           </address>
-          <p className="lead ">{article.abstract}</p>
+          <p className="lead ">{article?.abstract}</p>
           <a
-            href={article.url}
+            href={article?.url}
             target="_blank"
             className="text-blue-500 px-0 pb-16"
           >

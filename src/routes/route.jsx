@@ -16,8 +16,13 @@ const router = createBrowserRouter([
     errorElement: <NotFoundPage />,
     // children:[
     //   {
-    //     path: '/detail/:id',
+    //     // path: '/detail/:id',
+    //     index: true,
     //     element: <DetailPage />,
+    //     // children:[{
+    //     //   path: '/detail/:id/detais',
+    //     //   element: <DetailPage />,
+    //     // }]
     //   },
     // ]
   },
