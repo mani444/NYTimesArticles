@@ -35,11 +35,11 @@ const ProductCard = ({ product, index, onEdit }) => {
           {isEditing ? (
             <input
               type="text"
-              value={editedProduct.image}
+              value={editedProduct?.image}
               onChange={(e) =>
                 setEditedProduct({ ...editedProduct, image: e.target.value })
               }
-              className="w-full h-[200px] object-cover border rounded"
+              className="w-full h-[400px] object-cover border rounded"
             />
           ) : (
             <NavLink to={`/detail/${product?.id}`}>
@@ -58,14 +58,14 @@ const ProductCard = ({ product, index, onEdit }) => {
             <>
               <input
                 type="text"
-                value={editedProduct.title}
+                value={editedProduct?.title}
                 onChange={(e) =>
                   setEditedProduct({ ...editedProduct, title: e.target.value })
                 }
                 className="border p-2 rounded w-full"
               />
               <textarea
-                value={editedProduct.description}
+                value={editedProduct?.description}
                 onChange={(e) =>
                   setEditedProduct({
                     ...editedProduct,
@@ -76,7 +76,7 @@ const ProductCard = ({ product, index, onEdit }) => {
               />
               <input
                 type="number"
-                value={editedProduct.price}
+                value={editedProduct?.price}
                 onChange={(e) =>
                   setEditedProduct({
                     ...editedProduct,
