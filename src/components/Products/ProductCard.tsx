@@ -12,7 +12,25 @@ import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 import { Button } from "../ui/button";
 
-const ProductCard = ({ product, index, onEdit }) => {
+
+interface product {
+  description: string,
+  title: string,
+  price: number,
+  image: string,
+  category: string,
+  id: number,
+}
+
+interface Product {
+  product:product,
+  index:number,
+  onEdit:Function    
+}
+
+const ProductCard:React.FC<Product> = ({ product, index, onEdit }) => {
+  console.log("product", product);
+  
   const [isEditing, setIsEditing] = useState(false);
   const [editedProduct, setEditedProduct] = useState(product);
   // console.log(`editedProduct`, editedProduct);
@@ -136,17 +154,6 @@ const ProductCard = ({ product, index, onEdit }) => {
   );
 };
 
-ProductCard.propTypes = {
-  product: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string,
-    category: PropTypes.string,
-    price: PropTypes.number.isRequired,
-    image: PropTypes.string,
-  }).isRequired,
-  index: PropTypes.number.isRequired,
-  onEdit: PropTypes.func.isRequired,
-};
+
 
 export default ProductCard;

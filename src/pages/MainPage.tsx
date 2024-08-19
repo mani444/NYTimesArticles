@@ -1,6 +1,6 @@
 import Navbar from "../components/Navbar/Navbar";
-import ArticleList from "@/components/ArticleList/ArticleList";
-import ProductList from "@/components/Products/ProductsList";
+import ArticleList from "../components/ArticleList/ArticleList";
+import ProductList from "../components/Products/ProductsList";
 import { Outlet } from "react-router-dom";
 
 const MainPage = () => {

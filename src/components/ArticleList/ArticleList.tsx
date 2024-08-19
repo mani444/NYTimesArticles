@@ -1,30 +1,23 @@
-// // eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
-import useSWR from "swr";
-import { fetchData } from "@/lib/utils";
 import ArticleCard from "../ArticleCard/ArticleCard";
-import { Spinner } from "@/components/ui/spinner";
-import { getArticles } from "@/redux/articles/articleThunk";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { useGetArticlesQuery } from "@/redux/rtkSlice/articles";
-import { useGetWeekArticlesQuery } from "@/redux/rtkSlice/articles";
-import { Outlet } from "react-router-dom";
+import { Spinner } from "../../components/ui/spinner";
+import { useGetArticlesQuery } from "../../redux/rtkSlice/articles";
+import { useGetWeekArticlesQuery } from "../../redux/rtkSlice/articles";
 
-const ArticleList = () => {
-  // const dispatch = useDispatch();
-  // const articles = useSelector((state) => state.articles.articles);
-  // console.log("articles",articles);
-  // const error = useSelector((state) => state.articles.error);
-  // console.log("error",error);
-  // const status = useSelector((state) => state.articles.status);
-  // console.log("status",status);
+interface Article {
+  id: number;
+  media?: {
+    "media-metadata": {
+      url?: string;
+    }[];
+  }[];
+  updated: string;
+  title: string;
+  byline?: string;
+  abstract: string;
+}
 
-  // useEffect(() => {
-  //   if (status === "idle") {
-  //     dispatch(getArticles());
-  //   }
-  // }, [status, dispatch]);
+const ArticleList: React.FC = () => {
   const [skipQuery, setSkipQuery] = useState(false);
 
   const { data, error, isLoading, refetch } = useGetArticlesQuery(undefined, {
@@ -45,7 +38,7 @@ const ArticleList = () => {
       </div>
     );
 
-  const articles = data?.results || [];
+    const articles: Article[] = data?.results || [];
   console.log(`articles`, articles);
 
   return (
@@ -98,3 +91,4 @@ const ArticleList = () => {
 };
 
 export default ArticleList;
+

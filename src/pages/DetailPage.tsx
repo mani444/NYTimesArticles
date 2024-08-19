@@ -1,4 +1,4 @@
-import ArticleDetail from "@/components/ArticleDetail/ArticleDetail";
+import ArticleDetail from "../components/ArticleDetail/ArticleDetail";
 import Navbar from "../components/Navbar/Navbar";
 
 const DetailPage = () => {

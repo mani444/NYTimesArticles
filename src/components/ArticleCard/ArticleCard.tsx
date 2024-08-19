@@ -8,12 +8,39 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
-import logo from "@/assets/cardDefaultImage.jpg";
+import logo from "../../assets/cardDefaultImage.jpg";
 import PropTypes from "prop-types";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Button } from "../ui/button";
+import  { ReactNode } from 'react';
 
-const ArticleCard = ({ article, index }) => {
+interface MediaMetadata {
+  url: string;
+}
+
+interface Media {
+  "media-metadata": MediaMetadata[];
+}
+interface Article {
+  id: number;
+  media?: Media[];
+  updated: string;
+  title: string;
+  byline?: string;
+  url?: string;
+  abstract: string;
+}
+
+interface ArticleCardProps {
+  article: Article;
+  index: number;
+  children: ReactNode;
+}
+
+
+const ArticleCard:React.FC<ArticleCardProps> = ({ article, index }) => {
+  console.log("article", article);
+  
   const [expandedArticles, setExpandedArticles] = useState({});
 
   const placeholderImage = logo;
@@ -23,7 +50,7 @@ const ArticleCard = ({ article, index }) => {
   const isExpanded = expandedArticles[index];
   const navigate = useNavigate();
 
-  const handleExpandClick = (index) => {
+  const handleExpandClick = (index:any) => {
     setExpandedArticles((prev) => ({
       ...prev,
       [index]: !prev[index],
@@ -96,25 +123,6 @@ const ArticleCard = ({ article, index }) => {
   );
 };
 
-ArticleCard.propTypes = {
-  article: PropTypes.shape({
-    id: PropTypes.number,
-    media: PropTypes.arrayOf(
-      PropTypes.shape({
-        "media-metadata": PropTypes.arrayOf(
-          PropTypes.shape({
-            url: PropTypes.string,
-          })
-        ).isRequired,
-      })
-    ).isRequired,
-    updated: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    byline: PropTypes.string,
-    url: PropTypes.string.isRequired,
-    abstract: PropTypes.string.isRequired,
-  }).isRequired,
-  index: PropTypes.number.isRequired,
-};
+
 
 export default ArticleCard;

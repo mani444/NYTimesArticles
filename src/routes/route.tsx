@@ -1,6 +1,6 @@
-import DetailPage from "@/pages/DetailPage";
-import MainPage from "@/pages/MainPage";
-import NotFoundPage from "@/pages/NotFoundPage";
+import DetailPage from "../pages/DetailPage";
+import MainPage from "../pages/MainPage";
+import NotFoundPage from "../pages/NotFoundPage";
 import {
   Navigate,
   Route,

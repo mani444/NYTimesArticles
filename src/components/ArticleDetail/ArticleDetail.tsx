@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import logo from "@/assets/cardDefaultImage.jpg";
 import { useParams, useLocation } from "react-router-dom";
-import { fetchData } from "@/lib/utils";
+import { fetchData } from "../../lib/utils";
 import { Spinner } from "../ui/spinner";
 import useSWR from "swr";
 

@@ -2,11 +2,27 @@ import React, { useState } from "react";
 import {
   useGetProductsQuery,
   useUpdateProductMutation,
-} from "@/redux/rtkSlice/productSlicle";
-import { Spinner } from "@/components/ui/spinner";
+} from "../../redux/rtkSlice/productSlicle";
+import { Spinner } from "../../components/ui/spinner";
 import ProductCard from "./ProductCard";
 
-const ProductList = () => {
+
+interface ProductDetails {
+  description: string,
+  title: string,
+  price: number,
+  image: string,
+  category: string,
+  id: number,
+  product?:ProductDetails,
+}
+
+interface ProductCardProps {
+  product:ProductDetails,
+  index:number,
+  onEdit:Function    
+}
+const ProductList:React.FC<ProductCardProps> = () => {
   const { data, error, isLoading, refetch } = useGetProductsQuery(undefined, {
     refetchOnMountOrArgChange: true,
   });
@@ -14,7 +30,9 @@ const ProductList = () => {
   const [updateProduct] = useUpdateProductMutation();
   const [editingProduct, setEditingProduct] = useState(null);
 
-  const handleEditProduct = async (product) => {
+  const handleEditProduct = async (product:object) => {
+    console.log("editproduct", product);
+    
     try {
       const updatedProduct = await updateProduct({
         id: product.id,
@@ -37,7 +55,7 @@ const ProductList = () => {
       </div>
     );
 
-  const products = data || [];
+  const products:ProductDetails[] = data || [];
 
   return (
     <div className="relative py-16">
